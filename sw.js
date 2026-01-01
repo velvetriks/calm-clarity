@@ -1,15 +1,1 @@
-const CACHE = "calm-clarity-v1";
-
-self.addEventListener("install", e => {
-  e.waitUntil(
-    caches.open(CACHE).then(c =>
-      c.addAll(["./", "./index.html", "./app.js", "./db.js"])
-    )
-  );
-});
-
-self.addEventListener("fetch", e => {
-  e.respondWith(
-    caches.match(e.request).then(r => r || fetch(e.request))
-  );
-});
+self.addEventListener('install',e=>{e.waitUntil(caches.open('calm').then(c=>c.addAll(['./','index.html'])))});self.addEventListener('fetch',e=>{e.respondWith(caches.match(e.request).then(r=>r||fetch(e.request)))})

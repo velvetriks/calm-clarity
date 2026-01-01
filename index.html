@@ -3,104 +3,21 @@
 <head>
 <meta charset="UTF-8" />
 <title>Calm & Clarity</title>
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="apple-mobile-web-app-capable" content="yes" />
-<meta name="apple-mobile-web-app-status-bar-style" content="default" />
-
-<!-- Minimal PWA manifest (inline works on iOS) -->
-<link rel="manifest" href="data:application/json,{
-  &quot;name&quot;:&quot;Calm & Clarity&quot;,
-  &quot;short_name&quot;:&quot;Calm&quot;,
-  &quot;start_url&quot;:&quot;.&quot;,
-  &quot;display&quot;:&quot;standalone&quot;,
-  &quot;background_color&quot;:&quot;#f4f7f6&quot;,
-  &quot;theme_color&quot;:&quot;#2563eb&quot;
-}">
-
-<style>
-body {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont;
-  background: #f4f7f6;
-  color: #1f2933;
-  max-width: 720px;
-  margin: auto;
-  padding: 20px;
-}
-h1 { font-size: 1.8rem; }
-h2 { font-size: 1.2rem; margin-top: 1.2em; }
-.card {
-  background: white;
-  border-radius: 10px;
-  padding: 16px;
-  margin-top: 12px;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.05);
-}
-textarea {
-  width: 100%;
-  min-height: 50px;
-  margin-top: 6px;
-  padding: 8px;
-}
-button {
-  margin-top: 10px;
-  padding: 10px 14px;
-  border-radius: 6px;
-  border: none;
-  background: #2563eb;
-  color: white;
-}
-.secondary { background: #6b7280; }
-.status { font-size: 0.9rem; color: #047857; margin-top: 6px; }
-</style>
+<link rel="stylesheet" href="styles/main.css">
+<link rel="manifest" href="data:application/json,{&quot;name&quot;:&quot;Calm & Clarity&quot;,&quot;short_name&quot;:&quot;Calm&quot;,&quot;start_url&quot;:&quot;.&quot;,&quot;display&quot;:&quot;standalone&quot;}">
 </head>
-
 <body>
-
 <h1>Calm & Clarity</h1>
+<div id="app"></div>
 
-<div class="card">
-  <h2>🫁 Calm Reset</h2>
-  <p>3–3–6 breathing × 5 rounds</p>
-</div>
-
-<div class="card">
-  <h2>🎯 Today</h2>
-  <textarea id="system" placeholder="System"></textarea>
-  <textarea id="focus" placeholder="Today's focus"></textarea>
-</div>
-
-<div class="card">
-  <h2>🧠 Staff Thinking</h2>
-  <textarea id="problem" placeholder="Problem / risk"></textarea>
-  <textarea id="decision" placeholder="Decision"></textarea>
-  <textarea id="risk" placeholder="Risk reduced"></textarea>
-</div>
-
-<div class="card">
-  <h2>🌤️ Mood</h2>
-  <button onclick="setMood('😌 Calm')">😌 Calm</button>
-  <button class="secondary" onclick="setMood('🙂 Okay')">🙂 Okay</button>
-  <button class="secondary" onclick="setMood('😵 Overwhelmed')">😵 Overwhelmed</button>
-  <div id="moodStatus"></div>
-</div>
-
-<div class="card">
-  <h2>💾 Data</h2>
-  <button onclick="saveEntry()">Save Today</button>
-  <button class="secondary" onclick="exportData()">Export JSON</button>
-  <input type="file" accept=".json" onchange="importData(event)" />
-  <div id="status" class="status"></div>
-</div>
-
-<script src="db.js"></script>
-<script src="app.js"></script>
-
+<script src="js/db.js"></script>
+<script src="js/app.js"></script>
 <script>
-if ("serviceWorker" in navigator) {
-  navigator.serviceWorker.register("sw.js");
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('sw.js');
 }
 </script>
-
 </body>
 </html>
